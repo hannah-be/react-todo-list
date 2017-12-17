@@ -8,6 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Create components folder within the src directory
 - Create ToDoItem component
 
+
 ### Challenges
 
 1. Change Todo Item checkbox to instead use emoji icons for tick and cross inside a <button>

@@ -6,7 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <ToDoItem />
+      <ToDoItem description="First" completed={true}></ToDoItem>
+      <ToDoItem description="Second"></ToDoItem>
+      <ToDoItem description="Third"></ToDoItem>
       </div>
     );
   }
