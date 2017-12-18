@@ -11,6 +11,12 @@ input {
 }
 
 label {
-  display: block;
-  padding: 0.5rem;
+  display: inline-block;
+}
+
+button {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0.25rem;
 }
