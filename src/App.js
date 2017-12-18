@@ -17,21 +17,6 @@ class App extends Component {
 
   }
 
-  // onToggleItemAtIndex = (index) => {
-  //   this.setState((prevState) => {
-  //     // Get current items
-  //     const items = prevState.items
-  //     // Find the item with the particular index
-  //     const item = items[index]
-  //     // Toggle completed status
-  //     item.completed = !item.completed
-  //     // Regurn the changes we have
-  //     return {
-  //       items: items
-  //     }
-  //   })
-  // }
-
   onToggleItemAtIndex = (index) => {
     this.setState((prevState) => {
       // Get current items
@@ -89,20 +74,52 @@ class App extends Component {
         <dt>Total</dt>
         <dd>{total}</dd>
         </dl>
-      {
-        items.map((item, index) => (
-          <ToDoItem 
-            key={ index }
-            description={ item.description }
-            completed={ item.completed }
-            onToggleCompleted={
-              () => {
-                console.log('Todoitem onToggleCompleted received', index)
-                this.onToggleItemAtIndex(index)
-              }
+
+        <h2>Completed items</h2>
+        {
+          items.map((item, index) => {
+            if (!item.completed) {
+              return null
+            } else {
+              return (
+                <ToDoItem
+                keys={index}
+                { ...item }
+                onToggleCompleted={ () => this.onToggleItemAtIndex(index) }
+                />
+              )
             }
-          />
-        ))
+          })
+        }
+        <h2>Incomplete items</h2>
+        {
+          items.map((item,index) => {
+            if (item.completed) {
+              return null
+            } else {
+              return (
+            <ToDoItem 
+              keys={ index }
+              { ...item }
+              onToggleCompleted={ () => this.onToggleItemAtIndex(index) }
+            />)
+            }}
+          )
+        }
+      {
+        // items.map((item, index) => (
+        //   <ToDoItem 
+        //     key={ index }
+        //     description={ item.description }
+        //     completed={ item.completed }
+        //     onToggleCompleted={
+        //       () => {
+        //         console.log('Todoitem onToggleCompleted received', index)
+        //         this.onToggleItemAtIndex(index)
+        //       }
+        //     }
+        //   />
+        // ))
       }
       </div>
     );
