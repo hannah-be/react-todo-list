@@ -3,7 +3,8 @@ import React from 'react'
 const ToDoItem = ({
  description,
  completed = false,
- onToggleCompleted
+ onToggleCompleted,
+ onChangeDescription
 }) => (
   <div>
   <button
@@ -16,7 +17,17 @@ const ToDoItem = ({
       }
     }
   >{ completed ? '☑️' : '🔘' }</button>
-  {/* <label> */}
+  <input
+  type='text'
+  value={ description }
+  onChange={ (event) => { // This function is called on every keypress
+    const inputElement = event.target // Get the input
+    console.log(inputElement)
+    console.log(inputElement.value)
+    const newDescription = inputElement.value //Get the current value from the field
+    onChangeDescription(newDescription)
+  } }
+  >
 {/* 
     <input 
     type='checkbox' 
@@ -29,8 +40,7 @@ const ToDoItem = ({
       }
      } // inform when input changes it's status (state)
     /> */}
-    { description }
-    {/* </label> */}
+    </input>
     </div>
 )
 

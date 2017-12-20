@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import ToDoItem from './components/ToDoItem'
 
-
+const changeDescriptionOfItemsAtIndex = (items, index, description) => {
+  const item = items[index]
+  item.description = description
+  return items
+}
 
 // UI (view / controller)
 class App extends Component {
@@ -48,6 +52,14 @@ class App extends Component {
     })
   }
 
+  // This function changes the state...
+  onChangeItemDescriptionAtIndex = (index, description) => {
+    this.setState((prevState) => {
+      let items = prevState.items
+      items = changeDescriptionOfItemsAtIndex(items, index, description)
+      return { items }
+    })
+  }
 
   render() {
     const items = this.state.items
@@ -86,6 +98,7 @@ class App extends Component {
                 keys={index}
                 { ...item }
                 onToggleCompleted={ () => this.onToggleItemAtIndex(index) }
+                onChangeDescription={ (description) => this.onChangeItemDescriptionAtIndex(index, description)}
                 />
               )
             }
@@ -98,29 +111,16 @@ class App extends Component {
               return null
             } else {
               return (
-            <ToDoItem 
-              keys={ index }
-              { ...item }
-              onToggleCompleted={ () => this.onToggleItemAtIndex(index) }
-            />)
+                <ToDoItem 
+                keys={ index }
+                { ...item }
+                onToggleCompleted={ () => this.onToggleItemAtIndex(index) }
+                onChangeDescription={ (description) => this.onChangeItemDescriptionAtIndex(index, description)}
+                />)
             }}
           )
         }
-      {
-        // items.map((item, index) => (
-        //   <ToDoItem 
-        //     key={ index }
-        //     description={ item.description }
-        //     completed={ item.completed }
-        //     onToggleCompleted={
-        //       () => {
-        //         console.log('Todoitem onToggleCompleted received', index)
-        //         this.onToggleItemAtIndex(index)
-        //       }
-        //     }
-        //   />
-        // ))
-      }
+      
       </div>
     );
   }
