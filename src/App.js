@@ -12,6 +12,7 @@ const changeDescriptionOfItemsAtIndex = (items, index, description) => {
 // UI (view / controller)
 class App extends Component {
   // Data (model)
+  // Sets an instance variable for an 'App' - instance variables (including functions) don't need to be declared with var/let/const
   state = {
     items: [
       { description: 'First', completed: true },

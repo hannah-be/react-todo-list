@@ -28,7 +28,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     greater than 3: 🤯
 
 
-### Change button label to an editable input field (steps to implementing an event handler)
+### Challenge 3: Change button label to an editable input field (steps to implementing an event handler)
 1. Change the label field in the component to an input field that takes type (text) and value (description) as props, as well as an onChange event listener:
 ```javascript
   <input
