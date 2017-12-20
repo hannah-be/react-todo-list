@@ -21,7 +21,7 @@ const ToDoItem = ({
   type='text'
   value={ description }
   onChange={ (event) => { // This function is called on every keypress
-    const inputElement = event.target // Get the input
+    const inputElement = event.target // Get the input - the target is the actual html element that was changed/interacted with
     console.log(inputElement)
     console.log(inputElement.value)
     const newDescription = inputElement.value //Get the current value from the field

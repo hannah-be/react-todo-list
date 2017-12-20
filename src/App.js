@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ToDoItem from './components/ToDoItem'
+import ToDoItemStatus from './components/ToDoItemStatus'
 
 const changeDescriptionOfItemsAtIndex = (items, index, description) => {
   const item = items[index]
@@ -86,6 +87,10 @@ class App extends Component {
         <dt>Total</dt>
         <dd>{total}</dd>
         </dl>
+
+        <ToDoItemStatus 
+        incompletedCount={totalIncomplete}
+        />
 
         <h2>Completed items</h2>
         {
